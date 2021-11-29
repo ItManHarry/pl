@@ -24,3 +24,19 @@ for d in deck:
 print('-' * 80)
 print('First deck : ', deck[0])
 print('Last deck : ', deck[-1])
+print('Cards count is : ', len(deck))
+from random import choice
+print('Random card is : ', choice(deck))
+print(deck[:3])
+print(deck[12:13])
+print(deck[12::13])
+for d in reversed(deck):
+    print('Deck is : ', d)
+print(Card('Q', 'hearts') in deck)
+print(Card('7', 'beasts') in deck)
+suit_values = dict(spades=3, hearts=2, diamonds=1, clubs=0)
+def spades_high(card):
+    rank_value = FrenchDeck.ranks.index(card.rank)
+    return rank_value * len(suit_values) + suit_values[card.suit]
+for c in sorted(deck, key=spades_high):
+    print('Card is : ', c)
