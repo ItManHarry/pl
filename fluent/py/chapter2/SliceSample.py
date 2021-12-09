@@ -40,3 +40,30 @@ s = 'abc'
 s * 5
 print('Operand l is : ', s)
 print('Multi operand : ', s * 5)
+'''
+Lists of lists
+'''
+print('-' * 80)
+board1 = [['_'] * 3 for i in range(3)]
+print('Board 1 is : ', board1)
+board2 = [['_'] * 3] * 3
+print('Board 2 is : ', board2)
+print('Change element now ')
+board1[1][2] = 'X'
+board2[1][2] = 'Y'
+print('After change board 1 is : ', board1)
+print('After change board 2 is : ', board2)
+l1 = [1, 2, 3]
+id1 = id(l1)
+print('ID of l1 is : ', id(l1))
+l1 *= 2
+id2 = id(l1)
+print('Before the multiplication the list id is : ', id1, ', after the multiplication the list id is : ', id2, '. Result is : ', 'ID is not changed !!!' if id1 == id2 else 'ID is changed!!!')
+t1 = (1, 2, 3)
+id1 = id(t1)
+t1 *= 2
+id2 = id(t1)
+print('Before the multiplication the tuple id is : ', id1, ', after the multiplication the tuple id is : ', id2, '. Result is : ', 'ID is not changed !!!' if id1 == id2 else 'ID is changed!!!')
+t = (1, 2, 3, [10, 20])
+t[3] += [30, 40]
+print(t)
