@@ -36,6 +36,7 @@ Methods：
     tolist() -- return the array converted to an ordinary list
     tobytes() -- return the array converted to a string
 '''
+
 from array import array
 from random import random
 floats = array('d', (random() for i in range(10 ** 7)))
