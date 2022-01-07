@@ -54,3 +54,16 @@ print('-' * 80)
 r_country_codes = {code: country.upper() for country, code in country_codes.items() if code > 20}
 for k, v in r_country_codes.items():
     print('Key is : ', k, ' value is : ', v)
+print('-' * 80)
+index = {}
+keys = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
+values = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'B', 'C', 'C', 'B', 'A', 'F']
+for i in range(len(keys)):
+    print('Key : ', keys[i],  ', index : ', i)
+    for v in values:
+        if keys[i] == v:
+            index.setdefault(keys[i], []).append(v)
+        else:
+            index.setdefault(keys[i], [])
+for k, v in index.items():
+    print('Key is : ', k, ', value : ', v)
