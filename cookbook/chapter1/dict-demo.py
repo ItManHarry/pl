@@ -114,3 +114,62 @@ print(max(prices_and_names)) # ValueError: max() arg is an empty sequence
 prices_and_names = zip(prices.values(), prices.keys())
 print(min(prices_and_names)) # OK
 # print(max(prices_and_names)) # ValueError: max() arg is an empty sequence
+'''
+Problem
+    You have two dictionaries and want to find out what they might have in common (same
+keys, same values, etc.).
+Solution
+    To find out what the two dictionaries have in common, simply perform common set
+operations using the keys() or items() methods.
+'''
+d1 = {'x': 1, 'y': 2, 'z': 3}
+d2 = {'x': 4, 'y': 2, 'w': 3}
+sks = d1.keys() & d2.keys()
+print('Dictionary 1 : ', d1)
+print('Dictionary 2 : ', d2)
+print('Keys in common : ', sks, ', type is : ', type(sks))
+aks = d1.keys() - d2.keys() # keys in common
+print('Keys only in dictionary 1 : ', aks, ', type is : ', type(aks)) # keys in d1 that are not in d2
+sds = d1.items() & d2.items() # (key,value) pairs in common
+print('Same dictionary element : ', sds, ', type is : ', type(sds))
+nd = {key: d1[key] for key in d1.keys() - {'z'}}
+print('New dictionary : ', nd)
+'''
+Problem
+    You want to eliminate the duplicate values in a sequence, but preserve the order of the
+remaining items.
+Solution
+    If the values in the sequence are hashable, the problem can be easily solved using a set
+and a generator. For example:
+'''
+def deque(items, key=None):
+    seen = set()
+    for item in items:
+        val = item if key is None else key(item)
+        if val not in seen:
+            yield item
+            seen.add(val)
+l = [1, 2, 3, 2, 20, 1, 30, 3, 42, 21, 32, 34,54, 42, 100]
+print('Source list : ', l)
+s = set(l)
+print('Eliminate duplicate value by using set , the order is changed : ', list(s))
+print('After eliminate duplicate values : ', list(deque(l)))
+dl = [{'x': 1, 'y': 2}, {'x': 1, 'y': 3}, {'x': 1, 'y': 2}, {'x': 2, 'y': 4}]
+print('Dictionary list : ', dl)
+print('Eliminate duplicate elements : ', list(deque(dl, key=lambda d: (d['x'], d['y']))))
+print('Eliminate duplicate keys : ', list(deque(dl, key=lambda d: d['x'])))
+'''
+Problem
+    Your program has become an unreadable mess of hardcoded slice indices and you want
+to clean it up.
+Solution
+    Suppose you have some code that is pulling specific data fields out of a record string
+with fixed fields (e.g., from a flat file or similar format):
+'''
+record = '....................100 .......513.25 ..........'
+print(record[20: 32])
+print(record[40: 48])
+#cost = int(record[20:32]) * float(record[40:48])
+#print(cost)
+s = slice(2 ,4)
+print(l[s])

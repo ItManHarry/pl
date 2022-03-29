@@ -18,7 +18,7 @@ x = heapq.heapreplace(l, 80)
 print('x is : ', x)
 print('Replace : ', l)
 l1 = [1, 20, 34, 24, 43, 86, 100]
-l2 = [100, 32,45, 65, 78, 98]
+l2 = [100, 32, 45, 65, 78, 98]
 it = heapq.merge(l1, l2)
 '''print(list(it))
 for x in it:
