@@ -15,7 +15,7 @@ def cost(price):
 b = cost(4)
 print(b(5.1))
 '''
-计算数据N次方
+计算数N次方
 '''
 def power(n):
     def calculate(number):
