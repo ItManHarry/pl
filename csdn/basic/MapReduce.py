@@ -15,7 +15,7 @@ print('Cs is : ', tuple(cs))
 from functools import reduce
 def m(x, y):
     return x if x > y else y
-l = [10, 30, 450, 400, 200,490, 500, 1002]
+l = [10, 30, 450, 400, 200, 490, 500, 1002]
 r = reduce(m, l)
 print('Max element is : ', r)
 # 计算数的阶乘
