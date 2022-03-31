@@ -38,5 +38,6 @@ users = [
 users.sort(key=attrgetter('gender'))
 for g, items in groupby(users, key=attrgetter('gender')):
     print(g)
+    # print(g, ' - ', len(list(items)))
     for i in items:
         print('\t', i)
