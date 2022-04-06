@@ -90,4 +90,4 @@ print('Sum is : ', sum(data))
 all = 0
 for i in data:
     all += i
-print('Sum is : ', all)
+print('Sum is : ', all, sum(data))
