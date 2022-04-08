@@ -110,3 +110,81 @@ datepat = re.compile(r'(\d+)/(\d+)/(\d+)$')
 m = datepat.match('2/12/2022adbdc')
 print(m)
 print(m.group() if m else 'Not matched')
+'''
+Problem
+    You want to search for and replace a text pattern in a string.
+Solution
+    For simple literal patterns, use the str.replace() method. 
+'''
+text = 'yeah, but no, but yeah, but no, but yeah'
+text.replace('yeah', 'yep')
+print(text.replace('yeah', 'yep'))
+print(text)
+'''
+For more complicated patterns, use the sub() functions/methods in the re module. To
+illustrate, suppose you want to rewrite dates of the form “11/27/2012” as “2012-11-27.”
+Here is a sample of how to do it:
+'''
+text = 'Today is 11/27/2012. PyCon starts 3/13/2013.'
+'''
+The first argument to sub() is the pattern to match and the second argument is the
+replacement pattern. Backslashed digits such as \3 refer to capture group numbers in
+the pattern.
+'''
+replaced_text = re.sub(r'(\d+)/(\d+)/(\d+)', r'\3-\1-\2', text)
+print(text)
+print(replaced_text)
+'''
+If you’re going to perform repeated substitutions of the same pattern, consider compiling
+it first for better performance. For example:
+'''
+replace_pattern = re.compile(r'(\d+)/(\d+)/(\d+)')
+print(replace_pattern.sub(r'\3-\1-\2', text))
+'''
+For more complicated substitutions, it’s possible to specify a substitution callback function
+instead. For example:
+'''
+from calendar import month_abbr
+def month_name(m):
+    mon_name = month_abbr[int(m.group(1))]
+    return '{} {} {}'.format(m.group(2), mon_name, m.group(3))
+print(replace_pattern.sub(month_name, text))
+'''
+If you want to know how many substitutions were made in addition to getting the
+replacement text, use re.subn() instead. For example:
+'''
+replaced_text, replaced_count = replace_pattern.subn(month_name, text)
+print('Replaced text : ', replaced_text)
+print('Replaced count : ', replaced_count)
+'''
+Problem
+    You need to search for and possibly replace text in a case-insensitive manner.
+Solution
+    To perform case-insensitive text operations, you need to use the re module and supply
+the re.IGNORECASE flag to various operations. For example:
+'''
+text = 'UPPER PYTHON, lower python, Mixed Python, pyThon'
+elements = re.findall('python', text, flags=re.I)
+for e in elements:
+    print('Element : ', e)
+replaced_text = re.sub('python', 'java', text, flags=re.I)
+print(replaced_text)
+'''
+The last example reveals a limitation that replacing text won’t match the case of the
+matched text. If you need to fix this, you might have to use a support function, as in the
+following:
+'''
+def matchcases(word):
+    def replace(m):
+        text = m.group()
+        if text.isupper():
+            return word.upper()
+        elif text.islower():
+            return word.lower()
+        elif text[0].isupper():
+            return word.capitalize()
+        else:
+            return word
+    return replace
+replaced_text = re.sub('python', matchcases('groovy'), text, flags=re.I)
+print(replaced_text)
