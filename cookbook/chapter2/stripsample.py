@@ -116,3 +116,14 @@ print('{:,}'.format(958234125.52))
 print('His salary is : {:,}$.'.format(8650))
 d = dict(name='Tom', age=35)
 print('He is {name}, he is {age} years old.'.format(**d))
+d = {'role': 'Manager', 'salary': 8525.36}
+print('Role is {role}, salary is {salary:,}'.format(**d))
+class Person:
+    def __init__(self, role, salay):
+        self.role = role
+        self.salary = salay
+    def __repr__(self):
+        return 'Role is {}, salary is {:,}'.format(self.role, self.salary)
+sm = Person('Senior Manager', 9520.36)
+print(sm)
+print('Role is {}, salary is {:,}'.format(sm.role, sm.salary))
