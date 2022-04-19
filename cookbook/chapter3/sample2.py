@@ -32,3 +32,9 @@ with localcontext() as ctx:
 with localcontext() as ctx:
     ctx.prec = 20
     print(x / y)
+lns = [1.23e+18, 1, -1.23e+18]
+s = sum(lns)
+print('Sum is : ', s)
+import math
+s = math.fsum(lns)
+print('Sum now is : ', s)
