@@ -22,4 +22,9 @@ print('Denominator : ', c.denominator)
 print('Convert to float : ', float(c))
 a = 3.75
 f = Fraction(*a.as_integer_ratio())
-print('Float to fraction : ', f)
+from time import time
+st = time()
+for i in range(1000000):
+    print('i is {}'.format(i))
+et = time()
+print('Used time is : {:.1f} seconds.'.format(et-st))
