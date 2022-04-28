@@ -10,6 +10,9 @@ class Node:
     def __init__(self, value):
         self._value = value
         self._children = []
+    @property
+    def is_leaf(self):
+        return False if self._children else True
     def __repr__(self):
         return 'Node-{}'.format(self._value)
     def add_child(self, node):
@@ -29,12 +32,15 @@ c2.add_child(c21)
 c2.add_child(c22)
 root.add_child(c1)
 root.add_child(c2)
+for n in root:
+    print(n)
+print('-' * 80)
 # 递归打印子节点
 def print_node(node):
     print(node)
-    if node._children:
-        for child in node._children:
-            print_node(child)
-    else:
+    if node.is_leaf:
         return
+    else:
+        for child in node:
+            print_node(child)
 print_node(root)
