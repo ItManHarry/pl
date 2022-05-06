@@ -8,8 +8,8 @@ can be used to perform such matching. The usage is simple
 '''
 print('-' * 80)
 from fnmatch import fnmatch, fnmatchcase
-print(fnmatch('test.txt', '*.TXT'))
-print(fnmatchcase('test.txt', '*.TXT'))
+print(fnmatch('file.txt', '*.TXT'))
+print(fnmatchcase('file.txt', '*.TXT'))
 print(fnmatch('foo.py', '?oo.py'))
 print(fnmatch('Dat045.csv', 'Dat[0-9]*'))
 names = ['Dat1.csv', 'config.ini', 'Dat2.csv', 'foo.py', 'Test.txt']
