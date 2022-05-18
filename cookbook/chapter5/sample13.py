@@ -20,15 +20,17 @@ for dir in dirs:
     print('\t', dir)
 print('-' * 80)
 def all_files(path, files):
-    if os.path.isdir(path):
-        for sub_path in os.listdir(path):
-            new_path = os.path.abspath(os.path.join(path, sub_path))
-            if os.path.isdir(new_path):
-                all_files(new_path, files)
-            else:
-                files.append(new_path)
-    else:
-        files.append(path)
+    if os.path.exists(path):
+        if os.path.isdir(path):
+            for sub_path in os.listdir(path):
+                new_path = os.path.abspath(os.path.join(path, sub_path))
+                if os.path.isdir(new_path):
+                    all_files(new_path, files)
+                else:
+                    files.append(new_path)
+        else:
+            files.append(path)
+            return files
         return files
 files = []
 s_t1 = time.time()
@@ -39,11 +41,12 @@ for file in files:
 e_t1 = time.time()
 print('-' * 80)
 def all_files2(path):
-    for path, dirlist, filelist in os.walk(path):
-        for file in filelist:
-            yield os.path.abspath(os.path.join(path, file))
+    if os.path.exists(path):
+        for path, dirlist, filelist in os.walk(path):
+            for file in filelist:
+                yield os.path.abspath(os.path.join(path, file))
 s_t2 = time.time()
 for file in all_files2(path):
     print('File is : ', file)
 e_t2 = time.time()
-print('File size : {}, time 1 : {:.2f} seconds, time2 : {:.2f} seconds.'.format(len(files), e_t1-s_t1, e_t2-s_t2))
+print('File size : {:,}; time 1 : {:.2f} seconds, time 2 : {:.2f} seconds.'.format(len(files), e_t1-s_t1, e_t2-s_t2))
