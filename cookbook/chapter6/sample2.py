@@ -38,30 +38,32 @@ class Point:
     def __init__(self, x, y):
         self.x = x
         self.y = y
+
 p = Point(10, 20)
 # 序列化Python对象
 def serialize_instance(obj):
-    b = {'__classname__': type(obj).__name__}
-    b.update(vars(obj))
-    return b
+    d = {'__classname__': type(obj).__name__ }
+    d.update(vars(obj))
+    return d
 jp = json.dumps(serialize_instance(p))
 print(jp)
 # 反序列化Python对象
-def unserialize_instance(d):
-    classes = {
-        'Point': Point
-    }
-    classname = d.pop('__classname__', None)
-    if classname:
-        cls = classes[classname]
-        obj = cls.__new__(cls)  # make instance without calling __init__
+classes = {
+    'Point': Point
+}
+def unserialize_object(d):
+    clsname = d.pop('__classname__', None)
+    if clsname:
+        cls = classes[clsname]
+        obj = cls.__new__(cls) # Make instance without calling __init__
         for key, value in d.items():
             setattr(obj, key, value)
-            return obj
+        return obj
     else:
         return d
-jp = json.dumps(p, default=serialize_instance)
-p = json.loads(jp, object_hook=unserialize_instance)
-print(p)
-print(p.x)
-print(p.y)
+p = Point(2,3)
+s = json.dumps(p, default=serialize_instance)
+print(s)
+a = json.loads(s, object_hook=unserialize_object)
+print(a.x)
+print(a.y)
