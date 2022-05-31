@@ -1,0 +1,4 @@
+Jane,35,F
+Jack,25,M
+Tom,30,M
+Jany,40,F
