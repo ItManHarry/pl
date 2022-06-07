@@ -12,3 +12,5 @@ a = base64.b64encode(s)
 print(a)
 s = base64.b64decode(a)
 print(s.decode('utf-8'))
+from datetime import date
+print(date.today().strftime('%Y-%m-%d'))
