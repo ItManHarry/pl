@@ -64,3 +64,6 @@ to the following:
 fs = [lambda x, n=n: x+n for n in range(5)]
 for f in fs:
     print(f(1))
+ns = (i for i in range(100) if i % 2 == 0)
+for n in ns:
+    print('N is : ', n)
