@@ -1,6 +1,5 @@
 '''
-Writing Functions That Accept Any Number of
-Arguments
+Writing Functions That Accept Any Number of Arguments
 Problem
     You want to write a function that accepts any number of input arguments.
 Solution
