@@ -102,7 +102,8 @@ with the use of a lambda
 '''
 print('-'*80)
 seq = SequenceNO()
+seq2 = SequenceNO()
 async_apply(add, ('a', 'b'), callback=lambda r: s_handler(r, seq))
 async_apply(add, ('aa', 'bb'), callback=lambda r: s_handler(r, seq))
-async_apply(add, ('aaa', 'bbb'), callback=lambda r: s_handler(r, seq))
-async_apply(add, ('aaaa', 'bbbb'), callback=lambda r: s_handler(r, seq))
+async_apply(add, ('aaa', 'bbb'), callback=lambda r: s_handler(r, seq2))
+async_apply(add, ('aaaa', 'bbbb'), callback=lambda r: s_handler(r, seq2))
