@@ -107,3 +107,10 @@ async_apply(add, ('a', 'b'), callback=lambda r: s_handler(r, seq))
 async_apply(add, ('aa', 'bb'), callback=lambda r: s_handler(r, seq))
 async_apply(add, ('aaa', 'bbb'), callback=lambda r: s_handler(r, seq2))
 async_apply(add, ('aaaa', 'bbbb'), callback=lambda r: s_handler(r, seq2))
+import time, random
+def gen_bill_no(prefix):
+    date_str = time.strftime('%Y%m%d')
+    random_num = random.randint(1000, 10000)
+    return prefix+date_str+str(random_num)
+bill_no = gen_bill_no('CK')
+print(bill_no)
