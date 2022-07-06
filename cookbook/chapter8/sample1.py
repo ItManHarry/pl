@@ -1,4 +1,5 @@
 '''
+Changing the String Representation of Instances
 Problem
     You want to change the output produced by printing or viewing instances to something
 more sensible.

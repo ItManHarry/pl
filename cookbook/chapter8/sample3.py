@@ -1,4 +1,5 @@
 '''
+Making Objects Support the Context-Management Protocol
 Problem
     You want to make your objects support the context-management protocol (the with
 statement).

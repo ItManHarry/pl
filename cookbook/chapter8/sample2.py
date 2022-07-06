@@ -1,4 +1,5 @@
 '''
+Customizing String Formatting
 Problem
     You want an object to support customized formatting through the format() function
 and string method.
