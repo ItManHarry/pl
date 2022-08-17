@@ -52,3 +52,6 @@ print(len(item))
 item.append(8)
 item.append('a')
 print(list(item))
+data = [(1, 20), (5, 30), (3, 100), (2, 200)]
+new_data = sorted(data, key=lambda x: x[0])
+print(new_data)
