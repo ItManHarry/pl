@@ -77,3 +77,5 @@ print('System separator is : ', os.path.sep)
 file = os.path.join(os.getcwd(), 'sample-os.py')
 file_size = os.path.getsize(file)
 print('File size is : {} kb'.format(file_size))
+d = []
+print('a' not in d)

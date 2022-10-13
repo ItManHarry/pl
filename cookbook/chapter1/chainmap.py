@@ -20,3 +20,13 @@ print('b : ', b)
 print('c : ', c)
 for k, v in c.items():
     print('Key is : ', k, ', value : ', v)
+s = '010102'[-2:]
+codes = ['01001001', '01001002', '01001003', '01001004', '01001015', '01001150', '01001005']
+new_code_num = int(max(codes)[-3:]) + 1
+if new_code_num < 10:
+    print('00' + str(new_code_num))
+elif new_code_num < 100:
+    print('0' + str(new_code_num))
+else:
+    print(str(new_code_num))
+print(int(s))
