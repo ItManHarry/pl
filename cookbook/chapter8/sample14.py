@@ -7,8 +7,7 @@ methods need to be implemented to do it.
 Solution
 The collections library defines a variety of abstract base classes that are extremely
 useful when implementing custom container classes. To illustrate, suppose you want
-your class to support iteration. To do that, simply start by having it inherit from col
-lections.Iterable
+your class to support iteration. To do that, simply start by having it inherit from collections.Iterable
 '''
 import bisect
 from collections.abc import Sequence, MutableSequence
