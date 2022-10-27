@@ -1,4 +1,5 @@
 '''
+Delegating Attribute Access
 Problem
 You want an instance to delegate attribute access to an internally held instance possibly
 as an alternative to inheritance or in order to implement a proxy.
