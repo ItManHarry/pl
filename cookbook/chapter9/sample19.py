@@ -32,3 +32,6 @@ s = Stock('DEL', 50, 90.1)
 print(s)
 p = Point(10, 20)
 print(p)
+ps = [Point(i*10, i*20) for i in range(5)]
+for i, p in enumerate(ps):
+    print(i+1, p)
