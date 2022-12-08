@@ -1,0 +1,2 @@
+def blash():
+    print('blash')
