@@ -44,13 +44,15 @@ for k, v in z.items():
 import time, datetime, uuid
 from datetime import date
 today = date.today()
-print(today)
+print(today.strftime('%Y/%m/%d'))
 date_str = '2022-01-25'
 year, month, day = [int(s) for s in date_str.split('-')]
 print(year)
 print(month)
 print(day)
 date_d = date(year, month, day)
+print(type(date_d), 'Date is : ', date_d)
+date_d = datetime.datetime.strptime(date_str, '%Y-%m-%d').date()
 print(type(date_d), 'Date is : ', date_d)
 def utc_to_locale(utc_date_time, off_set=None):
     '''
