@@ -30,3 +30,45 @@ elif new_code_num < 100:
 else:
     print(str(new_code_num))
 print(int(s))
+x = dict(
+    aaa=10,
+    bbb=20,
+)
+y = {'ccc': 100, 'ddd': 200}
+z = ChainMap(x, y)
+for k, v in z.items():
+    print('Key is : ', k, ', value is : ', v)
+
+
+
+import time, datetime, uuid
+from datetime import date
+today = date.today()
+print(today)
+date_str = '2022-01-25'
+year, month, day = [int(s) for s in date_str.split('-')]
+print(year)
+print(month)
+print(day)
+date_d = date(year, month, day)
+print(type(date_d), 'Date is : ', date_d)
+def utc_to_locale(utc_date_time, off_set=None):
+    '''
+    UTC时间转本地
+    :param utc_date_time:   UTC时间
+    :param off_set:         时区(如果为None则默认转为本地时区)
+    :return:
+    '''
+    now_stamp = time.time()
+    locale_time = datetime.datetime.fromtimestamp(now_stamp)
+    utc_time = datetime.datetime.utcfromtimestamp(now_stamp)
+    # 计算时区差
+    if off_set is None:
+        off_set = locale_time - utc_time
+    else:
+        off_set = datetime.timedelta(hours=off_set)
+    locale_date_time = utc_date_time + off_set
+    return locale_date_time
+utc_now = datetime.datetime.utcnow()
+print(utc_now)
+print(utc_to_locale(utc_now, 7))
